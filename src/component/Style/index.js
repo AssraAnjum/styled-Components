@@ -45,8 +45,23 @@ const Input = styled.input`
     border:none;
     border-radius:3px;
 `;
-const Thing= styled.div`
-
+const Thing= styled.div.attrs(()=>({tabIndex:0}))`
+    color:blue;
+    &:hover{
+        color:red;
+    }
+    & ~ & {
+        background:tomato;
+    }
+    & + &{
+        background:lime;
+    }
+    &.something{
+        background:orange;
+    }
+    .something-else &{
+        border:1px solid;
+    }
 `;
 const ReverseButton = props => <Button {...props} children={props.children.split('').reverse()}/>
 const index = () => {
@@ -62,12 +77,14 @@ const index = () => {
         <StyledLink>Styled, exciting Link</StyledLink>
         <Input defaultValue="Amyra" type="text" />
         <Input defaultValue="Assra" type="text" inputColor="red"/>
-        <Thing>Hello World!</Thing>
-        <Thing>Hello World!</Thing>
-        <Thing className="something">Hello World!</Thing>
-        <Thing>Hello World!</Thing>
+        <Thing>Hello</Thing>
+        <Thing>This is Assra Anjum</Thing>
+        <Thing className="something">This concept is about</Thing>
+        <div>---></div>
+        <Thing>Pseudoelements, pseudoselectors, and nesting</Thing>
         <div className="something-else">
-        <Thing>Hello World!</Thing>
+        <Thing>Thank you</Thing>
+        
         </div>
     </Wrapper>
        
